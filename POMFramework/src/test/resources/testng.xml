@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+
+	<parameter name="username" value="rahulvats1990@outlook.com" />
+	<parameter name="password" value="random@123" />
+
+	<parameter name="browser" value="Chrome" />
+	<parameter name="url" value="https://www.dropbox.com/basic" />
+	<parameter name="language" value="English (United Kingdom)" />
+	<parameter name="isvalidLogin" value="true" />
+	<listeners>
+		<listener class-name="com.dropbox.listeners.AllureListener" />
+	</listeners>
+
+	<test thread-count="1" name="LoginTests">
+		<parameter name="expectedNameOfUser" value="Rahul Vats" />
+		<classes>
+			<class name="com.dropbox.tests.LoginTest" />
+		</classes>
+	</test>
+
+	<test thread-count="1" name="InvalidLogin">
+		<parameter name="isvalidLogin" value="false" />
+		<parameter name="username" value="testuser@gmail.com" />
+		<parameter name="password" value="random@123" />
+		<classes>
+			<class name="com.dropbox.tests.InvalidLoginTest" />
+		</classes>
+	</test>
+	<test thread-count="1" name="CreateNewFolderTests">
+		<classes>
+			<class name="com.dropbox.tests.CreateNewFolderTests" />
+		</classes>
+	</test>
+
+	<test thread-count="1" name="UploadFileTests">
+		<classes>
+			<class name="com.dropbox.tests.UploadFileTests" />
+		</classes>
+	</test>
+</suite> 
